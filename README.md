@@ -1,8 +1,8 @@
 # Sprints_ARM_MC2022
-## Repo Description:
+### Repo Description:
                    - This repo contains ARM Drivers  for microcontroller TM4C123GH6PM
                    - Still being updated
-## Contents:
+### Contents:
            - MCAL Drivers
                           Libraries related to all microcontroller hardware peripherals layer.
            - LIB
