@@ -13,26 +13,6 @@
 /*****************************************************************************
 *								FUNCTIONS DEFINITIONS
 *****************************************************************************/
-void Caller_Function()
-{
-	Dio_FlipChannel(LED_PORT, LED_PIN);
-}
-void LED_Blinking_Init()
-{
-	/* Initialize GPIO Configurations for Port */
-	GPIO_ConfigType LED_Config [1] = {{LED_PORT, LED_PIN, Output, DIO, Digital, Open_Drain, MA_8}};
-	GPIO_Init(LED_Config, 1);
-	
-	/* Initialize SYSTICK */
-	Systick_Init();
-	
-	/* Start SYSTICK with Initial Value */
-	Systick_Start(SYSTEM_CLOCK);
-	
-	/* set the callback function */
-		Callback_Function(Caller_Function);
-}
-
 void LED_ON()
 {
 	uint32_t Counts;
@@ -41,7 +21,7 @@ void LED_ON()
 	Counts = LED_ON_SECS * SYSTEM_CLOCK;
 	
 	/* Reload the counts value */
-	Systick_ReloadNewValue(Counts);
+	Systick_ReloadNewValue(Counts-1);
 }
 
 void LED_OFF()
@@ -52,5 +32,37 @@ void LED_OFF()
 	Counts = LED_OFF_SECS * SYSTEM_CLOCK;
 	
 	/* Reload the counts value */
-	Systick_ReloadNewValue(Counts);
+	Systick_ReloadNewValue(Counts-1);
 }
+
+void Caller_Function()
+{
+	static uint8_t count = 0; 
+	if(count == 0){
+		Dio_WriteChannel(LED_PORT, LED_PIN, High);
+		LED_OFF();
+		count = 1;
+	}
+	else{
+		Dio_WriteChannel(LED_PORT, LED_PIN, Low);
+		LED_ON();
+		count = 0;
+	}
+	
+}
+void LED_Blinking_Init()
+{
+	/* Initialize GPIO Configurations for Port */
+	GPIO_ConfigType LED_Config [1] = {{LED_PORT, LED_PIN, Output, DIO, Digital, Open_Drain, MA_8}};
+	GPIO_Init(LED_Config, 1);
+	
+	/* Initialize SYSTICK */
+	Systick_Init(SYSTEM_CLOCK - 1);
+	
+	/* Start SYSTICK with Initial Value */
+	Systick_Start();
+	
+	/* set the callback function */
+		Callback_Function(Caller_Function);
+}
+

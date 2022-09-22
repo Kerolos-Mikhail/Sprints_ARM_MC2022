@@ -17,12 +17,13 @@
 #include "SYSTICK_Private.h"
 #include "../../LIB/STD_TYPES.h"
 
+
 /****************************************************************************
 *					FUNCTIONS PROTOTYPES
 ****************************************************************************/
-void Systick_Init(void);
+void Systick_Init(uint32_t ReloadValue);
 
-void Systick_Start(uint32_t ReloadValue);
+void Systick_Start(void);
 
 void Systick_Stop(void);
 
@@ -30,7 +31,7 @@ void Systick_ReloadNewValue(uint32_t NewValue);
 
 void SysTick_Handler (void);
 
-void Callback_Function(void (*Fptr)(void));
+void Callback_Function(void(* Fptr)(void));
 
 #endif
 /***************************************************************************

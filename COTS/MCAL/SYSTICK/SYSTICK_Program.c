@@ -15,28 +15,29 @@
 *					DATA TYPES
 ****************************************************************************/
 
-static void (* Func_ptr)(void);
+static void (* Callback_Fptr)(void) = 0;
+
 /****************************************************************************
 *					FUNCTIONS DEFINITIONS
 ****************************************************************************/
-void Systick_Init()
+void Systick_Init(uint32_t ReloadValue)
 {
 	/* Control the clock source */
 	STCTRL |= (1 << CLK_SRC);						/* System clock */
 	
-	/* Enable SCB Interrupt */
-	SYSHNDCTRL |= (1 << TICK);
+	/* Reload the value */
+	STRELOAD = (ReloadValue << RELOAD) & 0x00FFFFFF;
+	
+	/* Clear the current value */
+	STCURRENT = 0;
 	
 	/* Enable Peripheral Interrupt */
 	STCTRL |= (1 << INTEN);
 	
 }
 
-void Systick_Start(uint32_t ReloadValue)
+void Systick_Start()
 {
-	/* Reload the value */
-	STRELOAD = (ReloadValue << RELOAD) & 0x00FFFFFF;
-	
 	/* Enable Systick */
 	STCTRL |= (1 << ENABLE);
 }
@@ -53,16 +54,16 @@ void Systick_ReloadNewValue(uint32_t NewValue)
 	STRELOAD = (NewValue << RELOAD) & 0x00FFFFFF;
 }
 
-void Callback_Function(void (*Fptr)(void))
+void Callback_Function(void(* Fptr)(void))
 {
-	if(Fptr != 0)
-	{
-			Func_ptr = Fptr;
-	}
+		if(Fptr != 0){
+			Callback_Fptr = Fptr;
+		}
 }
+
 
 /* SYSIICK ISR */ 
 void SysTick_Handler(){
 	
-		Func_ptr();
+	Callback_Fptr();
 }

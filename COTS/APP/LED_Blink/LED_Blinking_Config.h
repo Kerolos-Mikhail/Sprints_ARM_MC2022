@@ -1,5 +1,5 @@
 /*****************************************************************************
-*					File: DIO.h
+*					File: LED_BLinking.h
 *	 Description: contains configurations and functions 
 *								prototypes of DIO Driver
 *		Created By:	Kerolos Mikhail
@@ -17,13 +17,13 @@
 
 #define LED_PORT								PortF
 
-#define LED_PIN									Pin_0
+#define LED_PIN									Pin_3
 
 #define LED_ON_SECS							1									
 
 #define LED_OFF_SECS						1									
 
-#define SYSTEM_CLOCK						4000000
+#define SYSTEM_CLOCK						16000000
 
 #endif
 /***************************************************************************

@@ -20,6 +20,8 @@ void IntCtrl_Init()
 	APINT |= (0x05FA << VECTKEY);
 	APINT |= (0x6 << PRIGROUP);					/* 2-Group, 4-Subgroup */
 	 
+	
+	
 	/* Control Interrupt Priority */ 
 	#if (INTERRUPT_PERIPHERAL_GATES == 0)
 							PRI0 |= (INTERRUPT_GROUP_PRIORITY << GROUP_PRIORITY) | (INTERRUPT_SUB_GROUP_PRIORITY << INTA);

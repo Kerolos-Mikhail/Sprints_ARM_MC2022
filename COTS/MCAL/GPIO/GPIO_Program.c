@@ -7,7 +7,7 @@
 /*****************************************************************************
 *								INCLUDES
 *****************************************************************************/
-#include "GPIO.h"
+#include "GPIO_Interface.h"
 
 /*****************************************************************************
 *								FUNCTIONS DEFINITIONS
@@ -275,7 +275,7 @@ void GPIO_Init(GPIO_ConfigType * ConfigPtr, uint8_t NumOfPins)
 
 DIO_LevelType Dio_ReadChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId)
 {
-	uint32 PinValue;
+	uint32_t PinValue;
 	switch(PortId){
 		case PortA:
 								PinValue = *((volatile uint32_t *)(GPIODATA_PA + (1<<(ChannelId+2))));
@@ -322,7 +322,7 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 								if(Level == High){
 									* RegisterPtr = (1 << ChannelId);
 								}else if(Level == Low){
-									* RegisterPtr = ~(1 << ChannelId);
+									* RegisterPtr = 0;
 								}
 								break;
 		case PortC:
@@ -330,7 +330,7 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 								if(Level == High){
 									* RegisterPtr = (1 << ChannelId);
 								}else if(Level == Low){
-									* RegisterPtr = ~(1 << ChannelId);
+									* RegisterPtr = 0;
 								}
 													break;
 		case PortD:
@@ -338,7 +338,7 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 								if(Level == High){
 									* RegisterPtr = (1 << ChannelId);
 								}else if(Level == Low){
-									* RegisterPtr = ~(1 << ChannelId);
+									* RegisterPtr = 0;
 								}
 													break;
 		case PortE:
@@ -346,7 +346,7 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 								if(Level == High){
 									* RegisterPtr = (1 << ChannelId);
 								}else if(Level == Low){
-									* RegisterPtr = ~(1 << ChannelId);
+									* RegisterPtr = 0;
 								}
 								break;
 		case PortF:
@@ -354,7 +354,7 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 								if(Level == High){
 									* RegisterPtr = (1 << ChannelId);
 								}else if(Level == Low){
-									* RegisterPtr = ~(1 << ChannelId);
+									* RegisterPtr = 0;
 								}
 								break;
 	
@@ -362,34 +362,34 @@ void Dio_WriteChannel(GPIO_PortType PortId, GPIO_ChannelType ChannelId, DIO_Leve
 }
 
 /****************************************************************************/
-uint8 Dio_ReadPort(GPIO_PortType PortId)
+uint8_t Dio_ReadPort(GPIO_PortType PortId)
 {
 	volatile uint32_t * RegisterPtr;
-	uint8 PortValue;
+	uint8_t PortValue;
 	switch(PortId){
 			case PortA:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PA + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 									break;
 			case PortB:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PB + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 									break;
 			case PortC:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PC + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 														break;
 			case PortD:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PD + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 														break;
 			case PortE:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PE + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 									break;
 			case PortF:
 									RegisterPtr = (volatile uint32_t *)(GPIODATA_PF + PORT_MASK);
-									PortValue = (uint8) (* RegisterPtr);
+									PortValue = (uint8_t) (* RegisterPtr);
 									break;
 		
 		}

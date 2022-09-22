@@ -16,8 +16,7 @@ int main()
 	
 	while(1)
 	{
-		LED_ON();
-		LED_OFF();
+		
 	}
 
 }

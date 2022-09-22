@@ -15,7 +15,7 @@
 *					GLOBAL CONSTANT MACROS
 ****************************************************************************/
 
-/* IInterrupt Type */
+/* Interrupt Type */
 #define	GPIO_Port_A	 								0 						
 #define	GPIO_Port_B									1
 #define	GPIO_Port_C									2
@@ -86,7 +86,7 @@
 #define	PWM1_Generator_3						137
 
 /* Configurations */
-#define INTERRUPT_PERIPHERAL_GATES		I2C0
+#define INTERRUPT_PERIPHERAL_GATES		UART0
 
 #define INTERRUPT_GROUP_PRIORITY			0
 
