@@ -16,7 +16,7 @@ int main()
 	
 	while(1)
 	{
-		
+		LED_CheckSwitches();
 	}
 
 }

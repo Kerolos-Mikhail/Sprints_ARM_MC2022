@@ -22,7 +22,6 @@
 #define STCTRL			*((volatile int *)(CORE_PERIPHERALS_BASE_ADDRESS + 0x010)) /* SysTick Control and Status Register */
 #define COUNT				16		/* Count Flag */
 #define CLK_SRC			2			/* Clock Source */
-#define INTEN				1			/* nterrupt Enable */
 #define ENABLE			0			/* Systick Enable */
 
 #define STRELOAD		*((volatile int *)(CORE_PERIPHERALS_BASE_ADDRESS + 0x014)) /* SysTick Reload Value Register */

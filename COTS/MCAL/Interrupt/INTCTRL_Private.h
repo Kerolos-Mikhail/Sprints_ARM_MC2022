@@ -86,6 +86,9 @@
 #define BUSA				1		/* Bus Fault Active */
 #define MEMA				0		/* Memory Management Fault Active */
 
+#define STCTRL			*((volatile int *)(CORE_PERIPHERALS_BASE_ADDRESS + 0x010)) /* SysTick Control and Status Register */
+#define INTEN				1			/* interrupt Enable */
+
 #endif
 /***************************************************************************
 *							END OF FILE

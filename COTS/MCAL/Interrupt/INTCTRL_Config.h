@@ -16,6 +16,11 @@
 ****************************************************************************/
 
 /* Interrupt Type */
+
+/******* System Peripherals***********/
+#define	SYSTICK	 										-1
+
+/*******External Perioherals**********/
 #define	GPIO_Port_A	 								0 						
 #define	GPIO_Port_B									1
 #define	GPIO_Port_C									2
@@ -86,7 +91,7 @@
 #define	PWM1_Generator_3						137
 
 /* Configurations */
-#define INTERRUPT_PERIPHERAL_GATES		UART0
+#define INTERRUPT_PERIPHERAL_GATES		SYSTICK
 
 #define INTERRUPT_GROUP_PRIORITY			0
 

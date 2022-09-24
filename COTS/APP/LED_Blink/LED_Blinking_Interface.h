@@ -17,6 +17,7 @@
 #include "LED_Blinking_Config.h"
 #include "../../MCAL/GPIO/GPIO_Interface.h"
 #include "../../MCAL/SYSTICK/SYSTICK_Interface.h"
+#include "../../MCAL/Interrupt/INTCTRL_Interface.h"
 #include "../../LIB/STD_TYPES.h"
 
 /*****************************************************************************
@@ -30,6 +31,8 @@ void LED_ON(void);
 void LED_OFF(void);
 
 void Caller_Function(void);
+
+void LED_CheckSwitches(void);
 
 #endif
 /***************************************************************************

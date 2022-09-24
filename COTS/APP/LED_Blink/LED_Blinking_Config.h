@@ -18,10 +18,10 @@
 #define LED_PORT								PortF
 
 #define LED_PIN									Pin_3
+								
+#define SWITCH1_PIN							Pin_4
 
-#define LED_ON_SECS							1									
-
-#define LED_OFF_SECS						1									
+#define SWITCH2_PIN							Pin_0
 
 #define SYSTEM_CLOCK						16000000
 

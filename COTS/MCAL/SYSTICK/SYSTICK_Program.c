@@ -31,9 +31,6 @@ void Systick_Init(uint32_t ReloadValue)
 	/* Clear the current value */
 	STCURRENT = 0;
 	
-	/* Enable Peripheral Interrupt */
-	STCTRL |= (1 << INTEN);
-	
 }
 
 void Systick_Start()
